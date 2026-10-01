@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>XPANOL DAILY</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: #000;
+            color: #000;
+            font-family: "Special Elite", monospace;
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            height: 70px;
+            background: #F8AC10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+        }
+
+        .logo {
+            font-family: "Special Elite", monospace;
+            font-size: 24px;
+        }
+
+        .date-display {
+            font-family: "Special Elite", monospace;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           CALENDAR
+        ========================= */
+
+        .calendar {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            width: 300px;
+            background: #F8AC10;
+            padding: 18px;
+            z-index: 20;
+            display: none;
+        }
+
+        .calendar.active {
+            display: block;
+        }
+
+        .calendar-title {
+            font-family: "Special Elite", monospace;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            font-family: "Special Elite", monospace;
+            font-size: 11px;
+            text-align: center;
+            padding: 7px 2px;
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .calendar-day.current {
+            background: #000;
+            color: #F8AC10;
+        }
+
+        .calendar-day.completed {
+            text-decoration: line-through;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            position: absolute;
+            top: 70px;
+            bottom: 120px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           CALENDAR PAGE
+        ========================= */
+
+        .calendar-page {
+            position: relative;
+            width: min(510px, 78vw);
+            height: min(690px, 78vh);
+            background: #f5ead7;
+            padding: 52px 42px 34px 42px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+        }
+
+
+        /* =========================
+           TOP OF PAGE
+        ========================= */
+
+        .calendar-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 18px;
+            background: #000;
+        }
+
+        .perforation {
+            position: absolute;
+            top: 18px;
+            left: 0;
+            width: 100%;
+            height: 9px;
+            background:
+                radial-gradient(
+                    circle at 5px 0,
+                    #000 0 4px,
+                    transparent 4.5px
+                )
+                repeat-x;
+            background-size: 10px 9px;
+        }
+
+
+        /* =========================
+           DATE
+        ========================= */
+
+        .day-number {
+            font-family: "Special Elite", monospace;
+            font-size: 96px;
+            line-height: 0.9;
+            margin-top: 12px;
+        }
+
+        .month {
+            font-family: "Special Elite", monospace;
+            font-size: 22px;
+            margin-top: 6px;
+        }
+
+        .weekday {
+            font-family: "Special Elite", monospace;
+            font-size: 16px;
+            margin-top: 4px;
+        }
+
+
+        /* =========================
+           DIVIDER
+        ========================= */
+
+        .page-divider {
+            width: 100%;
+            height: 1px;
+            background: #000;
+            margin: 20px 0;
+        }
+
+
+        /* =========================
+           IDIOMS
+        ========================= */
+
+        .idiom-block {
+            background: #F8AC10;
+            margin-left: -42px;
+            margin-right: -42px;
+            padding: 18px 42px;
+        }
+
+        .idiom-en {
+            font-family: "Special Elite", monospace;
+            font-size: 25px;
+            line-height: 1.15;
+            text-transform: uppercase;
+        }
+
+        .idiom-es {
+            font-family: "Special Elite", monospace;
+            font-size: 17px;
+            line-height: 1.2;
+            text-transform: uppercase;
+            margin-top: 7px;
+        }
+
+
+        /* =========================
+           MEANING
+        ========================= */
+
+        .meaning {
+            font-family: "Special Elite", monospace;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-top: 18px;
+        }
+
+
+        /* =========================
+           EXAMPLES
+        ========================= */
+
+        .examples {
+            margin-top: 30px;
+        }
+
+        .example-en,
+        .example-es {
+            font-family: "Special Elite", monospace;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .example-es {
+            margin-top: 8px;
+        }
+
+
+        /* =========================
+           MISSION
+        ========================= */
+
+        .mission {
+            margin-top: 22px;
+        }
+
+        .mission-title {
+            font-family: "Special Elite", monospace;
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+
+        .mission-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+
+        .mission-item {
+            font-family: "Special Elite", monospace;
+            font-size: 9px;
+            text-align: center;
+            border: 1px solid #000;
+            padding: 6px 2px;
+        }
+
+        .mission-item.done {
+            background: #000;
+            color: #F8AC10;
+        }
+
+
+        /* =========================
+           ACTIONS
+        ========================= */
+
+        .actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 18px;
+        }
+
+        .actions button {
+            flex: 1;
+            font-family: "Special Elite", monospace;
+            font-size: 9px;
+            background: #000;
+            color: #F8AC10;
+            border: none;
+            padding: 9px 5px;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            opacity: 0.8;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navigation {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 62px;
+            height: 58px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background: #F8AC10;
+        }
+
+        .navigation button {
+            font-family: "Special Elite", monospace;
+            font-size: 11px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px 12px;
+        }
+
+        .today-button {
+            background: #000 !important;
+            color: #F8AC10;
+        }
+
+
+        /* =========================
+           MODULES
+        ========================= */
+
+        .modules {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 62px;
+            background: #F8AC10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .module-link {
+            font-family: "Special Elite", monospace;
+            font-size: 11px;
+            color: #000;
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           PAGE ANIMATION
+        ========================= */
+
+        .page-falling {
+            animation: pageFall 0.65s ease-in forwards;
+        }
+
+        .page-entering {
+            animation: pageEnter 0.55s ease-out forwards;
+        }
+
+        @keyframes pageFall {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(115vh) rotate(5deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pageEnter {
+
+            0% {
+                transform: translateY(-115vh) rotate(-5deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            XPANOL DAILY
+        </div>
+
+        <div
+            class="date-display"
+            id="dateDisplay"
+        >
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         CALENDAR
+    ========================= -->
+
+    <div
+        class="calendar"
+        id="calendar"
+    >
+
+        <div class="calendar-title">
+            DAILY CALENDAR
+        </div>
+
+        <div
+            class="calendar-days"
+            id="calendarDays"
+        >
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="main">
+
+        <section
+            class="calendar-page"
+            id="calendarPage"
+        >
+
+            <div class="calendar-top"></div>
+
+            <div class="perforation"></div>
+
+
+            <!-- DATE -->
+
+            <div
+                class="day-number"
+                id="dayNumber"
+            >
+            </div>
+
+            <div
+                class="month"
+                id="month"
+            >
+            </div>
+
+            <div
+                class="weekday"
+                id="weekday"
+            >
+            </div>
+
+
+            <!-- IDIOMS -->
+
+            <div class="page-divider"></div>
+
+            <div class="idiom-block">
+
+
+                <!-- ENGLISH IDIOM -->
+
+                <div
+                    class="idiom-en"
+                    id="idiomEn"
+                >
+                </div>
+
+
+                <!-- SPANISH IDIOM -->
+
+                <div
+                    class="idiom-es"
+                    id="idiomEs"
+                >
+                </div>
+
+            </div>
+
+            <div class="page-divider"></div>
+
+
+            <!-- MEANING -->
+
+            <div
+                class="meaning"
+                id="meaning"
+            >
+            </div>
+
+
+            <!-- EXAMPLES -->
+
+            <div class="examples">
+
+                <div
+                    class="example-en"
+                    id="exampleEn"
+                >
+                </div>
+
+                <div
+                    class="example-es"
+                    id="exampleEs"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- MISSION -->
+
+            <div class="mission">
+
+                <div class="mission-title">
+                    TODAY'S MISSION
+                </div>
+
+                <div class="mission-items">
+
+                    <div
+                        class="mission-item"
+                        id="missionIdiom"
+                    >
+                        IDIOM
+                    </div>
+
+                    <div
+                        class="mission-item"
+                        id="missionExample"
+                    >
+                        EXAMPLE
+                    </div>
+
+                    <div
+                        class="mission-item"
+                        id="missionListen"
+                    >
+                        LISTEN
+                    </div>
+
+                    <div
+                        class="mission-item"
+                        id="missionPractice"
+                    >
+                        PRACTISE
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="actions">
+
+                <button onclick="listenIdiom()">
+                    LISTEN
+                </button>
+
+                <button onclick="completeMission()">
+                    COMPLETE TODAY
+                </button>
+
+                <button onclick="toggleCalendar()">
+                    CALENDAR
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav class="navigation">
+
+        <button
+            class="nav-button"
+            onclick="previousDay()"
+        >
+            ← PREVIOUS DAY
+        </button>
+
+        <button
+            class="today-button"
+            onclick="goToday()"
+        >
+            TODAY
+        </button>
+
+        <button
+            class="nav-button"
+            onclick="nextDay()"
+        >
+            NEXT DAY →
+        </button>
+
+    </nav>
+
+
+    <!-- =========================
+         MODULES
+    ========================= -->
+
+    <nav class="modules">
+
+        <a
+            class="module-link"
+            href="#"
+        >
+            FRASEO
+        </a>
+
+        <a
+            class="module-link"
+            href="#"
+        >
+            KEYWORDS
+        </a>
+
+        <a
+            class="module-link"
+            href="#"
+        >
+            PRO ZONE
+        </a>
+
+        <a
+            class="module-link"
+            href="#"
+        >
+            BOOSTER
+        </a>
+
+        <a
+            class="module-link"
+            href="#"
+        >
+            TRIGGER FIGHTER
+        </a>
+
+    </nav>
+
+
+    <script>
+
+        let currentIndex = 0;
+
+        let dailyData = [];
+
+        const savedProgress =
+            JSON.parse(
+                localStorage.getItem("xpanolDailyProgress")
+            ) || {};
+
+
+        /* =========================
+           LOAD DAILY DATA
+        ========================= */
+
+        async function loadDailyData() {
+
+            try {
+
+                const response =
+                    await fetch("dailyData.json");
+
+                if (!response.ok) {
+                    throw new Error(
+                        "Could not load dailyData.json"
+                    );
+                }
+
+                dailyData =
+                    await response.json();
+
+                displayDay(false);
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+
+        }
+
+
+        /* =========================
+           DISPLAY DAY
+        ========================= */
+
+        function displayDay(animate = false) {
+
+            const page =
+                document.getElementById(
+                    "calendarPage"
+                );
+
+            if (animate) {
+
+                page.classList.remove(
+                    "page-falling"
+                );
+
+                void page.offsetWidth;
+
+                page.classList.add(
+                    "page-falling"
+                );
+
+                setTimeout(() => {
+
+                    renderDay();
+
+                    page.classList.remove(
+                        "page-falling"
+                    );
+
+                    page.classList.add(
+                        "page-entering"
+                    );
+
+                    setTimeout(() => {
+
+                        page.classList.remove(
+                            "page-entering"
+                        );
+
+                    }, 550);
+
+                }, 300);
+
+            } else {
+
+                renderDay();
+
+            }
+
+        }
+
+
+        /* =========================
+           RENDER DAY
+        ========================= */
+
+        function renderDay() {
+
+            if (!dailyData.length) {
+                return;
+            }
+
+            const day =
+                dailyData[currentIndex];
+
+            const date =
+                new Date(day.date + "T12:00:00");
+
+            const weekday =
+                date.toLocaleDateString(
+                    "en-GB",
+                    {
+                        weekday: "long"
+                    }
+                ).toUpperCase();
+
+            const month =
+                date.toLocaleDateString(
+                    "en-GB",
+                    {
+                        month: "long"
+                    }
+                ).toUpperCase();
+
+            const fullDate =
+                date.toLocaleDateString(
+                    "en-GB",
+                    {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    }
+                ).toUpperCase();
+
+
+            document.getElementById(
+                "dateDisplay"
+            ).textContent = fullDate;
+
+
+            document.getElementById(
+                "dayNumber"
+            ).textContent =
+                date.getDate();
+
+
+            document.getElementById(
+                "month"
+            ).textContent =
+                month;
+
+
+            document.getElementById(
+                "weekday"
+            ).textContent =
+                weekday;
+
+
+            document.getElementById(
+                "idiomEn"
+            ).textContent =
+                day.en;
+
+
+            document.getElementById(
+                "idiomEs"
+            ).textContent =
+                day.es;
+
+
+            document.getElementById(
+                "meaning"
+            ).textContent =
+                day.meaning;
+
+
+            document.getElementById(
+                "exampleEn"
+            ).textContent =
+                day.exampleEn;
+
+
+            document.getElementById(
+                "exampleEs"
+            ).textContent =
+                day.exampleEs;
+
+
+            updateMission();
+            updateCalendar();
+
+        }
+
+
+        /* =========================
+           MISSION
+        ========================= */
+
+        function updateMission() {
+
+            if (!dailyData.length) {
+                return;
+            }
+
+            const date =
+                dailyData[currentIndex].date;
+
+            const completed =
+                savedProgress[date] === true;
+
+
+            const items = [
+                "missionIdiom",
+                "missionExample",
+                "missionListen",
+                "missionPractice"
+            ];
+
+
+            items.forEach(id => {
+
+                document
+                    .getElementById(id)
+                    .classList.toggle(
+                        "done",
+                        completed
+                    );
+
+            });
+
+        }
+
+
+        /* =========================
+           COMPLETE MISSION
+        ========================= */
+
+        function completeMission() {
+
+            if (!dailyData.length) {
+                return;
+            }
+
+            const date =
+                dailyData[currentIndex].date;
+
+            savedProgress[date] = true;
+
+            localStorage.setItem(
+                "xpanolDailyProgress",
+                JSON.stringify(savedProgress)
+            );
+
+            updateMission();
+            updateCalendar();
+
+        }
+
+
+        /* =========================
+           LISTEN
+        ========================= */
+
+        function listenIdiom() {
+
+            if (!dailyData.length) {
+                return;
+            }
+
+            const day =
+                dailyData[currentIndex];
+
+            speechSynthesis.cancel();
+
+            const utterance =
+                new SpeechSynthesisUtterance(
+                    day.en
+                );
+
+            utterance.lang = "en-GB";
+            utterance.rate = 0.85;
+
+            speechSynthesis.speak(
+                utterance
+            );
+
+        }
+
+
+        /* =========================
+           PREVIOUS DAY
+        ========================= */
+
+        function previousDay() {
+
+            if (!dailyData.length) {
+                return;
+            }
+
+            currentIndex--;
+
+            if (currentIndex < 0) {
+                currentIndex =
+                    dailyData.length - 1;
+            }
+
+            displayDay(true);
+
+        }
+
+
+        /* =========================
+           NEXT DAY
+        ========================= */
+
+        function nextDay() {
+
+            if (!dailyData.length) {
+                return;
+            }
+
+            currentIndex++;
+
+            if (
+                currentIndex >=
+                dailyData.length
+            ) {
+                currentIndex = 0;
+            }
+
+            displayDay(true);
+
+        }
+
+
+        /* =========================
+           TODAY
+        ========================= */
+
+        function goToday() {
+
+            if (!dailyData.length) {
+                return;
+            }
+
+            const today =
+                new Date()
+                    .toISOString()
+                    .split("T")[0];
+
+            const foundIndex =
+                dailyData.findIndex(
+                    day => day.date === today
+                );
+
+
+            if (foundIndex !== -1) {
+
+                currentIndex =
+                    foundIndex;
+
+            } else {
+
+                currentIndex = 0;
+
+            }
+
+            displayDay(true);
+
+        }
+
+
+        /* =========================
+           CALENDAR TOGGLE
+        ========================= */
+
+        function toggleCalendar() {
+
+            document
+                .getElementById("calendar")
+                .classList.toggle("active");
+
+        }
+
+
+        /* =========================
+           UPDATE CALENDAR
+        ========================= */
+
+        function updateCalendar() {
+
+            const container =
+                document.getElementById(
+                    "calendarDays"
+                );
+
+            container.innerHTML = "";
+
+
+            dailyData.forEach(
+                (day, index) => {
+
+                    const date =
+                        new Date(
+                            day.date +
+                            "T12:00:00"
+                        );
+
+
+                    const cell =
+                        document.createElement(
+                            "div"
+                        );
+
+                    cell.className =
+                        "calendar-day";
+
+
+                    if (
+                        index ===
+                        currentIndex
+                    ) {
+
+                        cell.classList.add(
+                            "current"
+                        );
+
+                    }
+
+
+                    if (
+                        savedProgress[
+                            day.date
+                        ] === true
+                    ) {
+
+                        cell.classList.add(
+                            "completed"
+                        );
+
+                    }
+
+
+                    cell.textContent =
+                        date.getDate();
+
+
+                    cell.onclick = () => {
+
+                        currentIndex =
+                            index;
+
+                        displayDay(true);
+
+                        document
+                            .getElementById(
+                                "calendar"
+                            )
+                            .classList.remove(
+                                "active"
+                            );
+
+                    };
+
+
+                    container.appendChild(
+                        cell
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           START
+        ========================= */
+
+        loadDailyData();
+
+    </script>
+
+</body>
+</html>
