@@ -654,7 +654,7 @@
     }
 }
  
-@media (max-width: 950px) and (orientation: landscape) {
+@@media (max-width: 950px) and (orientation: landscape) {
 
     html,
     body {
@@ -679,118 +679,99 @@
 
     .main {
         top: 40px;
-        bottom: 58px;
+        bottom: 68px;
         align-items: center;
         overflow: hidden;
     }
 
     .calendar-page {
         width: 100vw;
-        height: calc(100dvh - 98px);
+        height: calc(100dvh - 108px);
         min-height: 0;
         box-sizing: border-box;
-        padding: 10px 24px 8px 24px;
+        padding: 8px 24px 10px 24px;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
     }
 
     .calendar-top {
-        height: 8px;
+        height: 6px;
+        flex-shrink: 0;
     }
 
     .perforation {
-        top: 8px;
+        top: 6px;
         height: 5px;
     }
 
+    /* DATE */
+
     .day-number {
-        font-size: 50px;
+        font-size: 70px !important;
         line-height: 0.9;
-        margin-top: 5px;
+        margin-top: 12px;
+        flex-shrink: 0;
     }
 
     .month {
-        font-size: 13px;
-        margin-top: 1px;
+        font-size: 20px;
+        line-height: 1;
+        margin-top: 3px;
+        flex-shrink: 0;
     }
 
     .weekday {
-        font-size: 9px;
-        margin-top: 1px;
+        font-size: 13px;
+        line-height: 1;
+        margin-top: 3px;
+        flex-shrink: 0;
     }
 
+    /* DIVIDER */
+
     .page-divider {
-        margin: 5px 0;
+        margin: 8px 0;
+        flex-shrink: 0;
     }
+
+    /* IDIOMS */
 
     .idiom-block {
         margin-left: -24px;
         margin-right: -24px;
-        padding: 6px 24px;
+        padding: 14px 24px;
+        flex-shrink: 0;
+        background: #F8AC10;
     }
 
     .idiom-en,
     .idiom-es {
-        font-size: 14px;
-        line-height: 1.05;
+        font-size: 25px !important;
+        line-height: 1.1;
+        text-align: center;
     }
 
     .idiom-es {
-        margin-top: 2px;
+        margin-top: 7px;
     }
 
-    .meaning {
-        font-size: 9px;
-        line-height: 1.1;
-        margin-top: 4px;
-    }
+    /* HIDE EVERYTHING ELSE */
 
-    .examples {
-        margin-top: 6px;
-    }
-
-    .example-en,
-    .example-es {
-        font-size: 9px;
-        line-height: 1.1;
-    }
-
-    .example-es {
-        margin-top: 2px;
-    }
-
-    .mission {
-        margin-top: 5px;
-    }
-
-    .mission-title {
-        font-size: 7px;
-        margin-bottom: 2px;
-    }
-
-    .mission-items {
-        gap: 2px;
-    }
-
-    .mission-item {
-        font-size: 6px;
-        padding: 3px 1px;
-    }
-
+    .meaning,
+    .examples,
+    .mission,
     .actions {
-        gap: 3px;
-        margin-top: 5px;
+        display: none !important;
     }
 
-    .actions button {
-        font-size: 6px;
-        padding: 4px 2px;
-        color: #000 !important;
-        -webkit-text-fill-color: #000 !important;
-    }
+    /* NAVIGATION */
 
     .navigation {
-        bottom: 28px;
-        height: 30px;
+        bottom: 34px;
+        height: 34px;
         gap: 4px;
     }
 
@@ -817,8 +798,10 @@
         -webkit-text-fill-color: #F8AC10 !important;
     }
 
+    /* FOOTER */
+
     .modules {
-        height: 28px;
+        height: 34px;
         gap: 6px;
         padding: 0 5px;
     }
@@ -833,97 +816,7 @@
         -webkit-text-fill-color: #000 !important;
         text-decoration: none !important;
     }
-
-    .calendar {
-        top: 40px;
-        right: 8px;
-        width: calc(100vw - 16px);
-        padding: 10px;
-    }
-
-    .calendar-title {
-        font-size: 9px;
-        margin-bottom: 6px;
-    }
-
-    .calendar-days {
-        gap: 2px;
-    }
-
-    .calendar-day {
-        font-size: 8px;
-        padding: 4px 1px;
-    }
-
-    /* LANDSCAPE: DATE + IDIOMS ONLY */
-
-    .meaning,
-    .examples,
-    .mission,
-    .actions {
-        display: none !important;
-    }
-
-   
-   
-    .calendar-page {
-        width: 100vw;
-        height: calc(100dvh - 98px);
-        min-height: 0;
-        box-sizing: border-box;
-        padding: 12px 24px 10px 24px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        overflow: visible;
-    }
-
-    .day-number {
-        font-size: 76px !important;
-        line-height: 1.15;
-        margin-top: 18px;
-        padding-top: 6px;
-        overflow: visible;
-    }
-
-    .month {
-        font-size: 23px;
-        line-height: 1.2;
-        margin-top: 4px;
-    }
-
-    .weekday {
-        font-size: 16px;
-        line-height: 1.2;
-        margin-top: 3px;
-    }
-
-    .page-divider {
-        margin: 12px 0;
-        flex-shrink: 0;
-    }
-
-    .idiom-block {
-        margin-left: -24px;
-        margin-right: -24px;
-        padding: 16px 24px;
-        flex-shrink: 0;
-    }
-
-    .idiom-en,
-    .idiom-es {
-        font-size: 25px !important;
-        line-height: 1.2;
-        text-align: center;
-    }
-
-    .idiom-es {
-        margin-top: 8px;
-    }
 }
-
-
-   
     </style>
 </head>
 
