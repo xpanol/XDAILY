@@ -471,7 +471,7 @@
     }
 
     .calendar-page {
-        width: 92vw;
+        width: calc(100vw - 16px);
         height: calc(100vh - 108px);
         min-height: 0;
         padding: 100px 24px 20px 24px;
@@ -602,9 +602,16 @@
         font-size: 8px;
         padding: 6px 5px;
         color: #000 !important;
-        -webkit-text-fill-color: #F8AC10 !important;
+        -webkit-text-fill-color: #000 !important;
     }
-
+.navigation button.today,
+.navigation button.today:visited,
+.navigation button.today:hover,
+.navigation button.today:active,
+.navigation button.today:focus {
+    color: #F8AC10 !important;
+    -webkit-text-fill-color: #F8AC10 !important;
+}
     /* MODULE LINKS */
 
     .modules {
