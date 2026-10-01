@@ -864,43 +864,55 @@
         display: none !important;
     }
 
+   
+   
     .calendar-page {
-        padding: 18px 24px 12px 24px;
+        width: 100vw;
+        height: calc(100dvh - 98px);
+        min-height: 0;
+        box-sizing: border-box;
+        padding: 12px 24px 10px 24px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        overflow: hidden;
+        justify-content: flex-start;
+        overflow: visible;
     }
 
     .day-number {
-        font-size: 54px;
-        line-height: 1;
-        margin-top: 8px;
+        font-size: 76px !important;
+        line-height: 1.15;
+        margin-top: 18px;
+        padding-top: 6px;
+        overflow: visible;
     }
 
     .month {
-        font-size: 16px;
-        margin-top: 3px;
+        font-size: 23px;
+        line-height: 1.2;
+        margin-top: 4px;
     }
 
     .weekday {
-        font-size: 12px;
-        margin-top: 2px;
+        font-size: 16px;
+        line-height: 1.2;
+        margin-top: 3px;
     }
 
     .page-divider {
         margin: 12px 0;
+        flex-shrink: 0;
     }
 
     .idiom-block {
         margin-left: -24px;
         margin-right: -24px;
-        padding: 18px 24px;
+        padding: 16px 24px;
+        flex-shrink: 0;
     }
 
     .idiom-en,
     .idiom-es {
-        font-size: 23px;
+        font-size: 25px !important;
         line-height: 1.2;
         text-align: center;
     }
