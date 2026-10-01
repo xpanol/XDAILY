@@ -707,34 +707,12 @@
         height: 5px;
     }
 
-    /* DATE */
+       /* HIDE DATE */
 
-    .day-number {
-        font-size: 70px !important;
-        line-height: 0.9;
-        margin-top: 12px;
-        flex-shrink: 0;
-    }
-
-    .month {
-        font-size: 20px;
-        line-height: 1;
-        margin-top: 3px;
-        flex-shrink: 0;
-    }
-
+    .day-number,
+    .month,
     .weekday {
-        font-size: 13px;
-        line-height: 1;
-        margin-top: 3px;
-        flex-shrink: 0;
-    }
-
-    /* DIVIDER */
-
-    .page-divider {
-        margin: 8px 0;
-        flex-shrink: 0;
+        display: none !important;
     }
 
     /* IDIOMS */
@@ -742,20 +720,21 @@
     .idiom-block {
         margin-left: -24px;
         margin-right: -24px;
-        padding: 14px 24px;
+        padding: 24px 24px;
         flex-shrink: 0;
         background: #F8AC10;
     }
 
     .idiom-en,
     .idiom-es {
-        font-size: 25px !important;
-        line-height: 1.1;
+        font-size: 38px !important;
+        line-height: 1.15;
         text-align: center;
+        overflow-wrap: break-word;
     }
 
     .idiom-es {
-        margin-top: 7px;
+        margin-top: 12px;
     }
 
     /* HIDE EVERYTHING ELSE */
