@@ -444,219 +444,209 @@
 
         @media (max-width: 600px) {
 
-            html,
-            body {
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-            }
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
 
+    .header {
+        height: 52px;
+        padding: 0 14px;
+    }
 
-            /* HEADER */
+    .logo {
+        font-size: 18px;
+    }
 
-            .header {
-                height: 52px;
-                padding: 0 14px;
-            }
+    .date-display {
+        font-size: 10px;
+    }
 
-            .logo {
-                font-size: 18px;
-            }
+    .main {
+        top: 52px;
+        bottom: 92px;
+        align-items: center;
+    }
 
-            .date-display {
-                font-size: 10px;
-            }
+    .calendar-page {
+        width: 92vw;
+        height: calc(100vh - 108px);
+        min-height: 0;
+        padding: 42px 24px 20px 24px;
+    }
 
+    .calendar-top {
+        height: 13px;
+    }
 
-            /* MAIN */
+    .perforation {
+        top: 13px;
+        height: 7px;
+    }
 
-            .main {
-                top: 52px;
-                bottom: 92px;
-                align-items: center;
-            }
+    /* DATE */
 
+    .day-number {
+        font-size: 54px;
+        margin-top: 14px;
+        line-height: 0.95;
+    }
 
-            /* CALENDAR PAGE */
+    .month {
+        font-size: 17px;
+        margin-top: 5px;
+    }
 
-            .calendar-page {
-                width: 92vw;
-                height: calc(100vh - 108px);
-                min-height: 0;
-                padding: 34px 24px 20px 24px;
-            }
+    .weekday {
+        font-size: 12px;
+        margin-top: 3px;
+    }
 
+    /* DIVIDERS */
 
-            /* TOP */
+    .page-divider {
+        margin: 10px 0;
+    }
 
-            .calendar-top {
-                height: 13px;
-            }
+    /* IDIOMS */
 
-            .perforation {
-                top: 13px;
-                height: 7px;
-            }
+    .idiom-block {
+        margin-left: -24px;
+        margin-right: -24px;
+        padding: 12px 24px;
+    }
 
+    .idiom-en,
+    .idiom-es {
+        font-size: 17px;
+        line-height: 1.1;
+    }
 
-            /* DATE */
+    .idiom-es {
+        margin-top: 5px;
+    }
 
-            .day-number {
-                font-size: 58px;
-                margin-top: 8px;
-                line-height: 0.85;
-            }
+    /* MEANING */
 
-            .month {
-                font-size: 17px;
-                margin-top: 4px;
-            }
+    .meaning {
+        font-size: 10px;
+        line-height: 1.25;
+        margin-top: 9px;
+    }
 
-            .weekday {
-                font-size: 12px;
-                margin-top: 2px;
-            }
+    /* EXAMPLES */
 
+    .examples {
+        margin-top: 14px;
+    }
 
-            /* DIVIDERS */
+    .example-en,
+    .example-es {
+        font-size: 10px;
+        line-height: 1.25;
+    }
 
-            .page-divider {
-                margin: 10px 0;
-            }
+    .example-es {
+        margin-top: 5px;
+    }
 
+    /* MISSION */
 
-            /* IDIOMS */
+    .mission {
+        margin-top: 12px;
+    }
 
-            .idiom-block {
-                margin-left: -24px;
-                margin-right: -24px;
-                padding: 12px 24px;
-            }
+    .mission-title {
+        font-size: 9px;
+        margin-bottom: 5px;
+    }
 
-            .idiom-en,
-            .idiom-es {
-                font-size: 17px;
-                line-height: 1.1;
-            }
+    .mission-items {
+        gap: 3px;
+    }
 
-            .idiom-es {
-                margin-top: 5px;
-            }
+    .mission-item {
+        font-size: 7px;
+        padding: 5px 1px;
+    }
 
+    /* ACTION BUTTONS */
 
-            /* MEANING */
+    .actions {
+        gap: 4px;
+        margin-top: 10px;
+    }
 
-            .meaning {
-                font-size: 10px;
-                line-height: 1.25;
-                margin-top: 9px;
-            }
+    .actions button {
+        font-size: 7px;
+        padding: 7px 2px;
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+    }
 
+    /* NAVIGATION */
 
-            /* EXAMPLES */
+    .navigation {
+        bottom: 44px;
+        height: 48px;
+        gap: 4px;
+    }
 
-            .examples {
-                margin-top: 14px;
-            }
+    .navigation button,
+    .navigation button:visited,
+    .navigation button:hover,
+    .navigation button:active,
+    .navigation button:focus {
+        font-size: 8px;
+        padding: 6px 5px;
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+    }
 
-            .example-en,
-            .example-es {
-                font-size: 10px;
-                line-height: 1.25;
-            }
+    /* MODULE LINKS */
 
-            .example-es {
-                margin-top: 5px;
-            }
+    .modules {
+        height: 44px;
+        gap: 9px;
+        padding: 0 6px;
+    }
 
+    .module-link,
+    .module-link:visited,
+    .module-link:hover,
+    .module-link:active,
+    .module-link:focus {
+        font-size: 9px;
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+        text-decoration: none;
+    }
 
-            /* MISSION */
+    /* CALENDAR */
 
-            .mission {
-                margin-top: 12px;
-            }
+    .calendar {
+        top: 52px;
+        right: 8px;
+        width: calc(100vw - 16px);
+        padding: 12px;
+    }
 
-            .mission-title {
-                font-size: 9px;
-                margin-bottom: 5px;
-            }
+    .calendar-title {
+        font-size: 10px;
+        margin-bottom: 8px;
+    }
 
-            .mission-items {
-                gap: 3px;
-            }
+    .calendar-days {
+        gap: 3px;
+    }
 
-            .mission-item {
-                font-size: 7px;
-                padding: 5px 1px;
-            }
-
-
-            /* ACTIONS */
-
-            .actions {
-                gap: 4px;
-                margin-top: 10px;
-            }
-
-            .actions button {
-                font-size: 7px;
-                padding: 7px 2px;
-            }
-
-
-            /* NAVIGATION */
-
-            .navigation {
-                bottom: 44px;
-                height: 48px;
-                gap: 4px;
-            }
-
-            .navigation button {
-                font-size: 8px;
-                padding: 6px 5px;
-            }
-
-
-            /* MODULES */
-
-            .modules {
-                height: 44px;
-                gap: 9px;
-                padding: 0 6px;
-            }
-
-            .module-link {
-                font-size: 7px;
-                color: #000 !important;
-                -webkit-text-fill-color: #000;
-            }
-
-
-            /* CALENDAR */
-
-            .calendar {
-                top: 52px;
-                right: 8px;
-                width: calc(100vw - 16px);
-                padding: 12px;
-            }
-
-            .calendar-title {
-                font-size: 10px;
-                margin-bottom: 8px;
-            }
-
-            .calendar-days {
-                gap: 3px;
-            }
-
-            .calendar-day {
-                font-size: 9px;
-                padding: 5px 1px;
-            }
-
-        }
+    .calendar-day {
+        font-size: 9px;
+        padding: 5px 1px;
+    }
+}
     </style>
 </head>
 
